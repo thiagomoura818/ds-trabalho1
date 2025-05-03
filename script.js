@@ -78,6 +78,9 @@ function inicializarAlerta(){
 		localStorage.setItem('compras', JSON.stringify(compras));
 	}
 	
+	if(localStorage.getItem("usuarioAutenticado")!=null){
+		window.location.href="menu.html";
+	}
 }
 
 async function autenticar(event) {
