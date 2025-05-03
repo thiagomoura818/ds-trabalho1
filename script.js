@@ -17,6 +17,7 @@ class Compra{
 
 $(document).ready(function() {
 	$("#formulario").on("submit", autenticar);
+	$('#valordesejado').mask('#.##0,00', {reverse: true});
 });
 
 $("#formulario").validate(
@@ -76,10 +77,6 @@ function inicializarAlerta(){
 	if(localStorage.getItem('compras')==null){
 		let compras = [];
 		localStorage.setItem('compras', JSON.stringify(compras));
-	}
-	
-	if(localStorage.getItem("usuarioAutenticado")!=null){
-		window.location.href="menu.html";
 	}
 }
 
@@ -162,7 +159,10 @@ function adicionarLinhaAlertas(alerta, tabela){
 	novaLinha.appendChild(colunaTipo);
 
 	let colunaValor = document.createElement("td");
-	colunaValor.textContent = alerta.valor_produto;
+	colunaValor.textContent = new Intl.NumberFormat('pt-BR', {
+	    style: 'currency',
+	    currency: 'BRL'
+	}).format(alerta.valor_produto);
 	novaLinha.appendChild(colunaValor);
 
 	let colunaAtivo = document.createElement("td");
@@ -197,8 +197,12 @@ function adicionarLinhaCompras(compra, tabela){
 	colunaDescricao.textContent = compra.descricao_produto;
 	novaLinha.appendChild(colunaDescricao);
 
+
 	let colunaValor = document.createElement("td");
-	colunaValor.textContent = compra.valor_produto;
+	colunaValor.textContent = new Intl.NumberFormat('pt-BR', {
+	    style: 'currency',
+	    currency: 'BRL'
+	}).format(compra.valor_produto);
 	novaLinha.appendChild(colunaValor);
 
 
@@ -219,8 +223,12 @@ function adicionarLinha(produto, tabela){
 	colunaDescricao.textContent = produto.descricao;
 	novaLinha.appendChild(colunaDescricao);
 
+
 	let colunaValor = document.createElement("td");
-	colunaValor.textContent = produto.valor;
+	colunaValor.textContent = new Intl.NumberFormat('pt-BR', {
+	    style: 'currency',
+	    currency: 'BRL'
+	}).format(produto.valor);
 	novaLinha.appendChild(colunaValor);
 
 
@@ -341,4 +349,5 @@ async function cadastrarCompra(idProduto, valorCompra) {
 	compras.push(compra);
 	localStorage.setItem('compras', JSON.stringify(compras));
 }
+
 
