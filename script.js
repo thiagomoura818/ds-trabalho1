@@ -95,7 +95,7 @@ async function autenticar(event) {
 				localStorage.setItem('usuarioAutenticado', JSON.stringify(usuario));
 				window.location.href = "menu.html";
 			} else {
-				console.log("Usuário ou senha inválidos.");
+				alert("Usuário ou senha inválidos.");
 			}
 		} catch(error) {
 			console.log("Erro ao tentar autenticar." + " " + error);
