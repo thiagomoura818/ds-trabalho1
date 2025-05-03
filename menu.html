@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+	<title></title>
+</head>
+<body onload="atualizarTabela(); inicializarAlerta();">
+<div class="align-items-center bg-dark ps-3 d-flex flex-row">
+		<a class="p-2 text-light text-decoration-none fw-bold " href="#">Trabalho</a>
+		<a class="p-2 text-light text-decoration-none" href="menu.html">Alerta de Preço</a>
+		<a class="p-2 text-light text-decoration-none" href="compra.html">Compras</a>
+		<a class="p-2 text-light text-decoration-none" href="alertas.html">Alertas salvos</a>
+		<div class="ms-auto p-2">
+		    <button class="btn btn-danger" onclick="deslogar()">Sair</button>
+		</div>
+	</div>
+	<div class="container">
+		<div class="mt-4">
+			<h1 class="text-center border-bottom border-danger mb-4">Criar Alerta de Preço</h1>
+			<form id="formulario-menu">
+			<fieldset>
+				<div class="row">
+					<div class="col-md-4">
+						<label class="form-label" for="idproduto">Id do Produto</label>
+						<input class="form-control" type="text" name="idproduto" id="idproduto">
+					</div>
+					<div class="col-md-4">
+						<label class="form-label" for="valordesejado">Valor desejado</label>
+						<input class="form-control" type="text" name="valordesejado" id="valordesejado">
+					</div>
+					<div class="col-md-4">
+						<label class="form-label" for="acao">Ação</label>
+						<select class="form-select" id="filtro" name="filtro">
+							<option selected disabled>Seleciona uma opção</option>
+							<option value="1">Comprar</option>
+							<option value="2">Alerta</option>
+						</select>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col-12 d-flex justify-content-end">
+						<button class="btn btn-success" type="button" onclick="cadastrarAlerta()">Cadastrar</button>
+					</div>					
+				</div>
+
+			</fieldset>
+		</form>
+		</div>
+		<div class="mt-4">
+			<h1 class="text-center border-bottom border-danger mb-4">Produtos</h1>
+			<div class="mt-5">
+			<table id="tabela-produtos" class="table table-hover">
+				<thead class="table-light">
+					<tr>
+						<th>ID</th>
+						<th>Descrição</th>
+						<th>Valor</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
+		</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery.mask.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
