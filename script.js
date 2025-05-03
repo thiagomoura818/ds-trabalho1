@@ -90,7 +90,6 @@ async function autenticar(event) {
 		try {
 			let resposta = await fetch(`https://api-odinline.odiloncorrea.com/usuario/${login}/${senha}/autenticar`);
 			let usuario = await resposta.json();
-			console.log(usuario.id);
 			if(usuario.id > 0) { 
 				localStorage.setItem('usuarioAutenticado', JSON.stringify(usuario));
 				window.location.href = "menu.html";
@@ -110,7 +109,6 @@ function atualizarTabelaCompras(){
 
 	compras.forEach(compra =>{
 		adicionarLinhaCompras(compra, tabelaCompra);
-		console.log("entrou na tabela");
 	})
 }
 
@@ -142,7 +140,6 @@ function atualizarTabelaAlertas(){
 
 	alertas.forEach(alerta =>{
 		adicionarLinhaAlertas(alerta, tabelaAlertas);
-		console.log("entrou na tabela");
 	})
 }
 
@@ -256,9 +253,7 @@ async function cadastrarAlerta(){
 		let filtro = parseInt(document.getElementById("filtro").value);
 		
 		let produto = await retornaProduto(idProduto);
-		console.log(produto.id);
 		if(produto.id!=null){
-			console.log("produto existte!");
 			let alertas = JSON.parse(localStorage.getItem('alertas'));
 			
 			if(validaAlerta(alertas, idProduto)){
@@ -294,7 +289,6 @@ async function retornaProduto(idProduto) {
 	try {
 		let resposta = await fetch(`https://api-odinline.odiloncorrea.com/produto/${idProduto}`);
 		let produto = await resposta.json();
-		console.log("Resposta da API:", produto); 
 
 		return produto;
 	} catch (error) {
@@ -308,7 +302,6 @@ var interval = window.setInterval(verificaAlertas, 1000);
 // Remover posicao do array de forma eficiente
 
 async function verificaAlertas(){
-	console.log("funcionando!");
 	let alertas = JSON.parse(localStorage.getItem('alertas'));
 	for(let i = 0; i < alertas.length; i++){
 		if(alertas[i].valido){
