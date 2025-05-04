@@ -104,12 +104,17 @@ async function autenticar(event) {
 
 
 function atualizarTabelaCompras(){
-	let compras = JSON.parse(localStorage.getItem('compras'));
-	let tabelaCompra = document.getElementById("tabela-compras");
+	if(estaLogada()){
+		let compras = JSON.parse(localStorage.getItem('compras'));
+		let tabelaCompra = document.getElementById("tabela-compras");
 
-	compras.forEach(compra =>{
-		adicionarLinhaCompras(compra, tabelaCompra);
-	})
+		compras.forEach(compra =>{
+			adicionarLinhaCompras(compra, tabelaCompra);
+		})
+	}else{
+		alert("Você precisa estar logado para isso");
+		window.location.href = "index.html";
+	}
 }
 
 async function atualizarTabela(){
@@ -135,12 +140,17 @@ async function atualizarTabela(){
 }
 
 function atualizarTabelaAlertas(){
-	let alertas = JSON.parse(localStorage.getItem('alertas'));
-	let tabelaAlertas = document.getElementById("tabela-alertas");
+	if(estaLogada()){
+		let alertas = JSON.parse(localStorage.getItem('alertas'));
+		let tabelaAlertas = document.getElementById("tabela-alertas");
 
-	alertas.forEach(alerta =>{
-		adicionarLinhaAlertas(alerta, tabelaAlertas);
-	})
+		alertas.forEach(alerta =>{
+			adicionarLinhaAlertas(alerta, tabelaAlertas);
+		})
+	}else{
+		alert("Você precisa estar logado para isso");
+		window.location.href = "index.html";
+	}
 }
 
 function adicionarLinhaAlertas(alerta, tabela){
